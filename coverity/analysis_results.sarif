@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [{
+    "results":
+[{"ruleId":"OVERRUN/overrun/read/c_c++","message":{"text":"OVERRUN: Overrunning array \"a\" of 2 4-byte elements at element index 2 (byte offset 11) using index \"2\"."},"locations":[{"physicalLocation":{"artifactLocation":{"uri":"src/HelloWorld.c"},"region":{"startLine":6}}}],"partialFingerprints":{"primaryLocationLineHash":"a6029c0829caab4180086366eecbc749"},"codeFlows":[{"threadFlows":[{"locations":[{"location":{"physicalLocation":{"artifactLocation":{"uri":"src/HelloWorld.c"},"region":{"startLine":6}},"message":{"text":"Event Set 1: See details in step 2. (Event #1)"}}},{"location":{"physicalLocation":{"artifactLocation":{"uri":"src/HelloWorld.c"},"region":{"startLine":6}},"message":{"text":"Event #1: Overrunning array \"a\" of 2 4-byte elements at element index 2 (byte offset 11) using index \"2\"."}}}]}]}]}
+,{"ruleId":"UNINIT/uninit/scalar/c_c++","message":{"text":"UNINIT: Using uninitialized value \"a[2]\"."},"locations":[{"physicalLocation":{"artifactLocation":{"uri":"src/HelloWorld.c"},"region":{"startLine":6}}}],"partialFingerprints":{"primaryLocationLineHash":"eb18277d561cfc822894d53c10c69eae"},"codeFlows":[{"threadFlows":[{"locations":[{"location":{"physicalLocation":{"artifactLocation":{"uri":"src/HelloWorld.c"},"region":{"startLine":6}},"message":{"text":"Event Set 1: See details in steps 2 - 3. (Events #1 - #2)"}}},{"location":{"physicalLocation":{"artifactLocation":{"uri":"src/HelloWorld.c"},"region":{"startLine":4}},"message":{"text":"Event #1: Declaring variable \"a\" without initializer."}}},{"location":{"physicalLocation":{"artifactLocation":{"uri":"src/HelloWorld.c"},"region":{"startLine":6}},"message":{"text":"Event #2: Using uninitialized value \"a[2]\"."}}}]}]}]}
+],
+    "tool": {
+      "driver": {
+        "name": "Coverity",
+        "organization": "Synopsys",
+        "rules": [{"id":"OVERRUN/overrun/read/c_c++","shortDescription":{"text":"Out-of-bounds read"},"fullDescription":{"text":"Out-of-bounds read from a buffer: Incorrect values read from a different memory region will cause incorrect computations."},"defaultConfiguration":{"level":"error"},"properties":{"tags":[]}},{"id":"UNINIT/uninit/scalar/c_c++","shortDescription":{"text":"Uninitialized scalar variable"},"fullDescription":{"text":"Use of an uninitialized variable: The variable will contain an arbitrary value left from earlier computations."},"defaultConfiguration":{"level":"error"},"properties":{"tags":[]}}]
+      }
+    }
+  }]
+}
