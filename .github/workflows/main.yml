@@ -16,7 +16,7 @@ jobs:
         uses: github/codeql-action/upload-sarif@v3
         with:
           # Path to SARIF file relative to the root of the repository
-          sarif_file: coverity/analysis_results.json
+          sarif_file: coverity/analysis_results.sarif
           # Optional category for the results
           # Used to differentiate multiple results for one commit
           category: Coverity
