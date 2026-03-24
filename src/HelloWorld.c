@@ -15,7 +15,7 @@ void vulnerable_copy(char *input) {
 // Function with format string vulnerability
 void vulnerable_printf(char *input) {
     // Unsafe: user input used as format string
-    printf(input);
+    printf(input, "Hello, world!\n");
     printf("\n");
 }
 
