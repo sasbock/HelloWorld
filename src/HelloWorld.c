@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define BUFFER_SIZE 32
+#define BUFFER_SIZE 64
 
 // Function with buffer overflow vulnerability
 void vulnerable_copy(char *input) {
@@ -42,6 +42,14 @@ void integer_overflow() {
 
 // Function demonstrating command injection risk
 void command_injection(char *input) {
+    char command[64];
+
+    // Unsafe: user input directly used in system command
+    snprintf(command, sizeof(command), "echo %s", input);
+    system(command);
+}
+
+void command_injection2(char *input) {
     char command[64];
 
     // Unsafe: user input directly used in system command
