@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define BUFFER_SIZE 16
+#define BUFFER_SIZE 32
 
 // Function with buffer overflow vulnerability
 void vulnerable_copy(char *input) {
