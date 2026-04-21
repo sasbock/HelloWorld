@@ -31,6 +31,17 @@ void use_after_free() {
     printf("Use-after-free: %s\n", data);
 }
 
+void use_after_free2() {
+    char *data = (char *)malloc(2);
+    if (!data) return;
+
+    strcpy(data, "Temporary data");
+    free(data);
+
+    // Unsafe: using memory after it has been freed
+    printf("Use-after-free: %s\n", data);
+}
+
 // Function demonstrating integer overflow
 void integer_overflow() {
     int a = 2147483647; // INT_MAX
@@ -42,14 +53,6 @@ void integer_overflow() {
 
 // Function demonstrating command injection risk
 void command_injection(char *input) {
-    char command[64];
-
-    // Unsafe: user input directly used in system command
-    snprintf(command, sizeof(command), "echo %s", input);
-    system(command);
-}
-
-void command_injection2(char *input) {
     char command[64];
 
     // Unsafe: user input directly used in system command
