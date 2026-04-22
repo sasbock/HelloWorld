@@ -31,6 +31,17 @@ void use_after_free() {
     printf("Use-after-free: %s\n", data);
 }
 
+void use_after_free2() {
+    char *data = (char *)malloc(32);
+    if (!data) return;
+
+    strcpy(data, "Temporary data");
+    free(data);
+
+    // Unsafe: using memory after it has been freed
+    printf("Use-after-free: %s\n", data);
+}
+
 // Function demonstrating integer overflow
 void integer_overflow() {
     int a = 2147483647; // INT_MAX
