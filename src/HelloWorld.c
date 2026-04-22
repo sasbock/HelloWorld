@@ -49,6 +49,14 @@ void command_injection(char *input) {
     system(command);
 }
 
+void command_injection2(char *input) {
+    char command[64];
+
+    // Unsafe: user input directly used in system command
+    snprintf(command, sizeof(command), "echo %s", input);
+    system(command);
+}
+
 int main(int argc, char *argv[]) {
     if (argc < 2) {
         printf("Usage: %s <input>\n", argv[0]);
